@@ -20,7 +20,7 @@
 
 尽管采样表示已经在电信中使用了多年，但在过去十年中越来越多地使用数字记录音频之后，1982 年推出的光盘是采样的第一个高度可见的消费者应用。
 
-![图9.1](.gitbook/assets/chapter_09/9.1.png)
+![图9.1](.gitbook/assets/chapter_09/Image/9.1.png)
 
 <center>图 9.1 数字音频中的采样和重建。</center>
 
@@ -30,7 +30,7 @@
 
 &emsp;&emsp;事实证明，获得良好再现效果所需的每秒采样数取决于我们尝试录制的声音的高音。 如果我们尝试录制短笛或钹，那么适合再现弦乐贝司或底鼓的采样率会产生奇怪的结果； 但是这些声音以更高的采样率再现得很好。 为避免这些低采样失真，数字录音机对 ADC 的输入进行过滤，以去除可能导致问题的高频。
 
-![图9.2](.gitbook/assets/chapter_09/9.2.png)
+![图9.2](.gitbook/assets/chapter_09/Image/9.2.png)
 
 <center>图 9.2  以两种不同速率采样的正弦波（蓝色曲线）。顶部：在高采样率下，生成的样本（黑点）很好地代表了信号。 底部：较低的采样率会产生模棱两可的结果：样本与采样频率低得多的波（虚线）所产生的结果完全相同。</center>
 
@@ -64,7 +64,7 @@
 
 &emsp;&emsp;为方便定义，我们通常假设函数的域永远存在，当然在实践中它们必须停在某个地方，我们必须以特殊的方式处理端点。
 
-![图9.3](.gitbook/assets/chapter_09/9.3.png)
+![图9.3](.gitbook/assets/chapter_09/Image/9.3.png)
 
 <center>图 9.3  使用移动平均线平滑。</center>
 
@@ -92,7 +92,7 @@ $$(a \star b)[i] = \displaystyle\sum_{i} a[j]b[i-j] \tag{9.2}$$
 
 通过省略 j 的界限，我们表明这个和在所有整数上运行（即，从 -∞ 到 +∞）。 图 9.4 说明了如何计算一个输出样本，使用$b = \frac{1}{16}[...,0,1,4,6,4,1,0]$的示例，即 $b[0] = \frac{6}{16}，a[\pm1]=\frac{4}{16}$等等。
 
-![图9.4](.gitbook/assets/chapter_09/9.4.png)
+![图9.4](.gitbook/assets/chapter_09/Image/9.4.png)
 
 <center>图 9.4  计算序列 a 与支持五个样本宽度的滤波器 b 的离散卷积中的一个值。 $a \star b$ 中的每个样本都是 a 中附近样本的平均值，加权为b 的值。</center>
 &emsp;&emsp;在图形中，两个函数之一通常具有有限支持（如图 9.4 中的示例），这意味着它仅在参数值的有限区间内为非零。 如果我们假设 b 有有限的支持，那么有一些半径 r 使得当 |k| 时 b[k]=0 > 河。 在这种情况下，我们可以将上面的总和写为
@@ -115,7 +115,7 @@ $$b[k]=\Bigm\lbrace_{0 \quad otherwise.}^{\frac{1}{2r+1}\quad -r\leq k \leq r,}$
 
 如果将此滤波器代入方程（9.2），您会发现它简化为方程（9.1）中的移动平均线。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.5.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.5.png" width="  "></div>
 <center>图 9.5 离散盒式滤波器</center>
 
 &emsp;&emsp;如本例所示，卷积滤波器通常设计为总和为 1。这样，它们不会影响信号的整体电平。
@@ -124,7 +124,7 @@ $$a[i]=\Bigm\lbrace_{0 \quad i \, < \, 0 ,}^{1 \quad i \, \geq \, 0,}$$
 
 滤波器是以零为中心的五点盒式滤波器，
 $$b[k]=\frac{1}{5}\Bigm\lbrace_{0 \quad otherwise.}^{1 \quad -2 \, \leq \, k \, \leq \, 2,}$$
-<div align=center><img src=".gitbook/assets/chapter_09/9.6.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.6.png" width="  "></div>
 <center>图9.6 盒函数与阶跃函数的离散卷积。</center>
 
 卷积a和b的结果是什么？ 如图 9.6 所示，在特定索引i处，结果是从 i - 2 到 i + 2 范围内的阶跃函数的平均值。 如果 i < -2，我们对所有零进行平均，结果为零。 如果 i ≥ 2，我们对所有的取平均值，结果为 1。 中间有 i + 3 个，产生值$\frac{i+3}{5}$输出是一个线性斜坡，在五个样本中从 0 变为 1：$\frac{1}{5}$ [. . . , 0, 0, 1, 2, 3, 4, 5, 5, . . . ]。
@@ -157,7 +157,7 @@ $$
 
 &emsp;&emsp;一个非常简单的滤波器用作离散卷积的标识：它是半径为零的离散滤波器，或序列 d[i] = . . . , 0, 0, 1, 0, 0, . . . （图 9.7）。如果我们将 d 与信号 a 进行卷积，则和中将只有一个非零项：
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.7.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.7.png" width="  "></div>
 <center>图9.7 离散身份滤波器。</center>
 
 &emsp;&emsp;一个非常简单的滤波器用作离散卷积的标识：它是半径为零的离散滤波器，或序列 d[i] = 。 . . , 0, 0, 1, 0, 0, . . . （图 9.7）。如果我们将 d 与信号 a 进行卷积，则和中将只有一个非零项：
@@ -173,7 +173,7 @@ $$c=a-a \star b=a \star d-a \star b=a \star(d-b)$$
 
 $$b_{\rightarrow j}[i]=b[i-j]$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.8.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.8.png" width="  "></div>
 
 <center>
 
@@ -183,7 +183,7 @@ $$b_{\rightarrow j}[i]=b[i-j]$$
 
 这样看，卷积是 b 的移位副本的总和，由 a 的条目加权（图 9.9）。由于可交换性，我们可以选择 a 或 b 作为滤波器；如果我们选择 b，那么我们将为输入中的每个样本添加一个滤波器副本。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.9.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.9.png" width="  "></div>
 
 <center>
 
@@ -201,7 +201,7 @@ $$(f \star g)(x)=\int_{-\infty}^{+\infty} f(t) g(x-t) d t \tag{9.3}$$
 
 解释这个定义的一种方法是，在参数 x 处计算的 f 和 g 的卷积是在我们移动 g 以使 g(0) 与 f(t ）。就像在离散情况下一样，卷积是一个移动平均值，滤波器为平均值提供权重（见图 9.10）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.10.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.10.png" width="  "></div>
 
 <center>
 
@@ -227,7 +227,7 @@ $(f \star f)(x)= \begin{cases}1-|x| & -1<x<1 \\ 0 & \text { otherwise }\end{case
 
 这个函数，称为tent function，是另一个常见的滤波器（参见第 9.3.1 节）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.11.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.11.png" width="  "></div>
 
 <center>
 
@@ -243,7 +243,7 @@ $(f \star f)(x)= \begin{cases}1-|x| & -1<x<1 \\ 0 & \text { otherwise }\end{case
 
 在离散卷积中，我们看到离散脉冲 d 充当恒等式：$d \star a=a$。在连续情况下，还有一个恒等函数，称为狄拉克脉冲或狄拉克$\delta$函数，记为$\delta(x)$。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.12.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.12.png" width="  "></div>
 
 <center>
 
@@ -258,7 +258,7 @@ $$\int_{-\infty}^{\infty} \delta(x) f(x) d x=f(0)$$
 
 delta 函数在 0 处没有明确定义的值（您可以将其值大致视为 +∞），但对于所有 x •= 0，它确实具有值 δ(x) = 0
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.13.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.13.png" width="  "></div>
 <center>
 
 图 9.13。将函数与 δ(x) 进行卷积会返回相同函数的副本。
@@ -283,7 +283,7 @@ $(a \star f)(x)=\sum_{i} a[i] f(x-i)$
 
 x 处的重构函数 $a \star f$ 的值是 x 附近 i 值的样本 a[i] 的加权和（图 9.14）。权重来自滤波器 f，它在一组相隔一个单位的点上进行评估。例如，如果 x = 5 .3 且 f 的半径为 2，则 f 的计算值为 1.3、0.3、-0.7 和 -1.7。请注意，对于离散连续卷积，我们通常首先编写序列，然后编写滤波器，以便总和超过整数。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.14.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.14.png" width="  "></div>
 <center>
 
 图 9.14 离散连续卷积。
@@ -309,7 +309,7 @@ function reconstruct(sequence a, filter f, real x)
 
 $(a \star f)=\sum_{i} a[i] f_{\rightarrow i}$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.15.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.15.png" width="  "></div>
 <center>
 
 图 9.15。重构（离散-连续卷积）作为滤波器移位副本的总和。
@@ -326,7 +326,7 @@ $(a \star f)=\sum_{i} a[i] f_{\rightarrow i}$
 
 $$(a \star b)[i, j]=\sum_{i^{\prime}} \sum_{j^{\prime}} a\left[i^{\prime}, j^{\prime}\right] b\left[i-i^{\prime}, j-j^{\prime}\right]$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.16.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.16.png" width="  "></div>
 <center>
 
 图 9.16。九个输入样本的权重，这些样本有助于点 (i, j) 的离散卷积，滤波器 b 的半径为 1。
@@ -355,7 +355,7 @@ function convolve2d(sequence2d a, filter2d b, int i, int j)
 $$(f \star g)(x, y)=\iint f\left(x^{\prime}, y^{\prime}\right) g\left(x-x^{\prime}, y-y^{\prime}\right) d x^{\prime} d y^{\prime} ;$$
 $$(a \star f)(x, y)=\sum_{i} \sum_{j} a[i, j] f(x-i, y-j) .$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.17.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.17.png" width="  "></div>
 <center>
 
 图 9.17 输入信号中由 (x, y) 处的连续卷积产生的无穷小区域的权重。
@@ -364,7 +364,7 @@ $$(a \star f)(x, y)=\sum_{i} \sum_{j} a[i, j] f(x-i, y-j) .$$
 
 在每种情况下，特定点的结果是该点附近输入的加权平均值。对于连续-连续情况，它是以该点为中心的区域上的加权积分，而在离散-连续情况下，它是落在该点附近的所有样本的加权平均值。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.18.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.18.png" width="  "></div>
 <center>
 
 图 9.18 对于半径为 2 的重建滤波器，16 个输入样本的权重有助于在点 (x, y) 处进行离散连续卷积。
@@ -396,7 +396,7 @@ $$a_{\mathrm{box}, r}[i]= \begin{cases}1 /(2 r+1) & |i| \leq r \\ 0 & \text { ot
 
 $$f_{\text {box }, r}(x)= \begin{cases}1 /(2 r) & -r \leq x<r \\ 0 & \text { otherwise }\end{cases}$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.19.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.19.png" width="  "></div>
 <center>
 
 图 9.19 输入信号中由 (x, y) 处的连续卷积产生的无穷小区域的权重。
@@ -412,7 +412,7 @@ tent 或线性滤波器（图 9.20）是一个连续的分段线性函数：
 
 $$f_{\text {tent }}(x)= \begin{cases}1-|x| & |x|<1 \\ 0 & \text { otherwise }\end{cases}$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.20.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.20.png" width="  "></div>
 <center>
 
 图 9.20 帐篷过滤器和两个缩放版本。
@@ -426,7 +426,7 @@ $$f_{\text {tent }}(x)= \begin{cases}1-|x| & |x|<1 \\ 0 & \text { otherwise }\en
 
 $$f_{g}, \sigma(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{-x^{2} / 2 \sigma^{2}}$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.21.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.21.png" width="  "></div>
 <center>
 
 图 9.21 高斯滤波器
@@ -450,7 +450,7 @@ $$f_{B}(x)=\frac{1}{6}\left\{\begin{array}{ll}
 
 在分段三次中，B 样条是特殊的，因为它具有连续的一阶和二阶导数——即$C^2$。定义这个滤波器的更简洁的方法是$f_{B}=f_{\mathrm{bOx}} \star f_{\mathrm{bOx}} \star f_{\mathrm{bOx}} \star f_{\mathrm{bOx}}$；证明上面的较长形式是等价的是卷积的一个很好的练习（参见练习 3）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.22.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.22.png" width="  "></div>
 <center>
 
 图 9.22 B样条三次滤波器
@@ -467,7 +467,7 @@ $$f_{C}(x)=\frac{1}{2}\left\{\begin{array}{ll}
 0 & \text { otherwise }
 \end{array}\right.$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.23.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.23.png" width="  "></div>
 <center>
 
 图 9.23 Catmull-Rom 过滤器。
@@ -487,7 +487,7 @@ f_{M}(x) &=\frac{1}{3} f_{B}(x)+\frac{2}{3} f_{C}(x) \\
 \end{array}\right.
 \end{aligned}$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.24.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.24.png" width="  "></div>
 <center>
 
 图 9.24 Mitchell-Netravali 过滤器。
@@ -500,7 +500,7 @@ f_{M}(x) &=\frac{1}{3} f_{B}(x)+\frac{2}{3} f_{C}(x) \\
 &emsp;&emsp;滤波器的脉冲响应只是该函数的另一个名称：它是滤波器对只包含一个脉冲的信号的响应（回想一下，与脉冲卷积只会返回滤波器）。
 &emsp;&emsp;如果连续滤波器用于从离散序列重构连续函数时，如果得到的函数准确地采用样本点处的样本值，那么它就是插值——也就是说，它“连接点”而不是产生一个只在点附近的函数。插值滤波器正是那些 f(0) = 1 和 f(i) = 0 对于所有非零整数 i 的滤波器 f（图 9.25）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.25.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.25.png" width="  "></div>
 <center>
 
 图 9.25。插值滤波器准确地重构样本点，因为它在距中心的所有非零整数偏移处都具有零值。
@@ -510,7 +510,7 @@ f_{M}(x) &=\frac{1}{3} f_{B}(x)+\frac{2}{3} f_{C}(x) \\
 &emsp;&emsp;采用负值的过滤器具有振铃或过冲：它会在被过滤函数值的急剧变化周围产生额外的值振荡。
 &emsp;&emsp;例如，Catmull-Rom 滤波器在两侧都有负波瓣，如果用它过滤阶跃函数，它会稍微夸大阶跃，导致函数值低于 0 和高于 1（图 9.26）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.26.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.26.png" width="  "></div>
 <center>
 
 图 9.26。在过滤或重建尖锐的不连续性时，具有负瓣的滤波器总是会产生一些过冲。
@@ -521,7 +521,7 @@ f_{M}(x) &=\frac{1}{3} f_{B}(x)+\frac{2}{3} f_{C}(x) \\
 
 $$\sum_{i} f(x+i)=1 \quad \text { for all } x$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.27.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.27.png" width="  "></div>
 <center>
 
 图 9.27。半径为 1 的 tent 滤波器是一个无波纹重构滤波器；标准差为 1/2 的高斯滤波器不是。
@@ -551,7 +551,7 @@ $$b_{2}[i, j]=b_{1}[i] b_{1}[j]$$
 
 通过$f_2$的任何水平或垂直切片都是$f_1$的缩放副本。 $f_2$的积分是$f_1$的积分的平方，因此特别是如果$f_1$被归一化，那么$f_2$也是如此。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.27.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.27.png" width="  "></div>
 <center>
 
 图 9.28 可分离的 2D 帐篷过滤器。
@@ -577,7 +577,7 @@ f_{2, g}(x, y) &=\frac{1}{2 \pi}\left(e^{-x^{2} / 2} e^{-y^{2} / 2}\right), \\
 
 请注意，如果我们围绕原点旋转 1D 高斯以产生圆对称函数，这与我们将获得的函数相同（直到比例因子）。同时圆对称和可分的特性是高斯函数所独有的。沿坐标轴的轮廓是高斯的，但沿任何方向的轮廓在距中心的任何偏移处也是如此。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.29.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.29.png" width="  "></div>
 <center>
 
 图 9.29 可分离的 2D 帐篷过滤器。
@@ -603,7 +603,7 @@ S\left[i^{\prime}\right]=\sum_{j^{\prime}} a\left[i^{\prime}, j^{\prime}\right] 
 
 &emsp;&emsp;假设我们需要计算 [2, 2] 和 [3, 2] 处的$a \star b_{2}$，并且 b1 的半径为 2。检查公式 9.5，我们可以看到我们需要 S[0], 。 . . , S [4] 来计算 [2, 2] 处的结果，我们需要 S[1], . . . , S [5] 计算 [3, 2] 处的结果。因此，在可分离公式中，我们可以只计算 S 的所有六个值并共享 S[1], 。 . . , S [4]（图 9.30）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.30.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.30.png" width="  "></div>
 <center>
 
 图 9.30 使用包含 25 个样本的单独二维数组（上图）计算两个输出点，而不是沿着列过滤一次，然后使用包含五个样本的单独一维数组（下图）。
@@ -653,7 +653,7 @@ I_{\text {sharp }} &=(1+\alpha) I-\alpha\left(I \star f_{g, \sigma}\right) \\
 
 其中$f_{g, \sigma}$是宽度为$\sigma$的高斯滤波器。利用离散脉冲 d 和卷积的分布特性，我们能够将整个过程写成一个依赖于模糊宽度和锐化程度的单个滤波器（图 9.32）。
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.32.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.32.png" width="  "></div>
 <center>
 
 图 9.32。使用卷积滤波器锐化图像。
@@ -667,7 +667,7 @@ $$d_{m, n}(i, j)=\left\{\begin{array}{ll}
 0 & \text { otherwise. }
 \end{array}\right.$$
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.33.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.33.png" width="  "></div>
 <center>
 
 图 9.33。使用卷积滤波器锐化图像。
@@ -687,14 +687,14 @@ I_{\text {shadow }} &=\left(I \star d_{m, n}\right) \star f_{g, \sigma} \\
 ### 9.4.2 图像采样中的抗锯齿 Antialiasing in Image Sampling
 
 在图像合成中，我们经常需要生成图像的采样表示，我们有一个连续的数学公式（或者至少一个我们可以用来计算任何点的颜色的过程，而不仅仅是整数像素位置）。光线追踪是一个常见的例子；更多关于光线追踪和抗锯齿的具体方法在第 4 章。在信号处理的语言中，我们有一个连续的 2D 信号（图像），我们需要在规则的 2D 点阵上对其进行采样。如果我们在没有任何特殊措施的情况下继续对图像进行采样，结果将显示出各种混叠伪影（图 9.34）。在图像的锐利边缘，我们会看到被称为“锯齿”的阶梯状伪影。在有重复图案的区域，我们会看到被称为莫尔 ́e 图案的宽带。
-<div align=center><img src=".gitbook/assets/chapter_09/9.34.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.34.png" width="  "></div>
 <center>
 
 图 9.34。图像中的两种混叠伪影：周期性纹理中的莫尔图案（左）和直线上的“锯齿”（右）。
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.35.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.35.png" width="  "></div>
 <center>
 
 图 9.35 用于抗锯齿的三个不同采样过滤器的比较一个困难的测试图像，其中包含随着变大而间隔越来越近的圆圈。
@@ -716,7 +716,7 @@ I_{\text {shadow }} &=\left(I \star d_{m, n}\right) \star f_{g, \sigma} \\
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.36.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.36.png" width="  "></div>
 <center>
 
 图 9.36 重新采样图像由两个逻辑步骤组成，这些步骤在代码中组合成一个操作。首先，我们使用重建滤波器从输入样本中定义一个平滑、连续的函数。然后，我们在新网格上对该函数进行采样以获得输出样本。
@@ -731,7 +731,7 @@ I_{\text {shadow }} &=\left(I \star d_{m, n}\right) \star f_{g, \sigma} \\
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.37.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.37.png" width="  "></div>
 <center>
 
 图 9.36 重新采样 12 x 9 图像以制作 8 x 6 图像时输入和输出网格的采样位置。
@@ -754,7 +754,7 @@ return  b$$
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.38.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.38.png" width="  "></div>
 <center>
 
 图 9.38 重新采样 12 x 9 图像以制作 8 x 6 图像时输入和输出网格的采样位置。
@@ -795,7 +795,7 @@ x_{0}=x_{l}+\Delta x / 2 \\
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.39.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.39.png" width="  "></div>
 <center>
 
 图 9.39 使用不同大小的滤镜对图像进行上采样（放大）或下采样（缩小）的效果。
@@ -808,7 +808,7 @@ x_{0}=x_{l}+\Delta x / 2 \\
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.40.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.40.png" width="  "></div>
 <center>
 
 图 9.40 使用可分离的方法重新采样图像。
@@ -840,7 +840,7 @@ $$\int_{-\infty}^{\infty} \frac{\sin \pi u}{\pi u} \cos 2 \pi u x d u \tag{9.6}$
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.41.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.41.png" width="  "></div>
 <center>
 
 图 9.41 逼近具有有限正弦和的方波。
@@ -858,7 +858,7 @@ $$f(x)= \int _ {\frac {1}{1}}^ {\infty } \widehat {f} (u)e^ {2\pi iux}du \tag{9.
 
 </center>
 
-<div align=center><img src=".gitbook/assets/chapter_09/9.42.png" width="  "></div>
+<div align=center><img src=".gitbook/assets/chapter_09/Image/9.42.png" width="  "></div>
 <center>
 
 图 9.42 用最多四个截止频率中的每一个的余弦积分来逼近一个盒子函数。
